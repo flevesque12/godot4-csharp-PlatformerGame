@@ -40,6 +40,9 @@ public partial class PlayerBody : CharacterBody2D
 
 		ApplyGravity((float)delta);
 
+		if(IsOnFloor())
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Offset = new Vector2(0f, 0f);
+		
 		Velocity = velocity;
 		MoveAndSlide();		
 	}
@@ -110,27 +113,44 @@ public partial class PlayerBody : CharacterBody2D
 		if(GetNode<RayCast2D>("RaycastLeft").IsColliding() && !IsOnFloor()){
 			if(Input.IsActionPressed("ui_down"))
 			{
-				velocity = new Vector2(velocity.X, velocity.Y);				
+				velocity = new Vector2(velocity.X, velocity.Y);	
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("wallSlide");	
 			}
 			else
 			{
 				velocity = new Vector2(velocity.X, velocity.Y * 0.7f);
 				
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("wallSlide");
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Offset = new Vector2(9f, 0f);
+
+				//activate wall jump
 				if(Input.IsActionJustPressed("jump")){
 					velocity  = new Vector2(wallJumpVelocity, -wallJumpVelocity);
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Offset = new Vector2(0f, 0f);
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Jump");
 				}
 			}
 		}
 		else if(GetNode<RayCast2D>("RaycastRight").IsColliding() && !IsOnFloor()){
 			if(Input.IsActionPressed("ui_down"))
 			{
-				velocity = new Vector2(velocity.X, velocity.Y);				
+				velocity = new Vector2(velocity.X, velocity.Y);	
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("wallSlide");
+										
 			}
 			else
 			{			
 				velocity = new Vector2(velocity.X, velocity.Y * 0.7f);
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("wallSlide");
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Offset = new Vector2(-10f, 0f);
+
+				//activate wall jump
 				if(Input.IsActionJustPressed("jump")){
 					velocity = new Vector2(-wallJumpVelocity, -wallJumpVelocity);
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Offset = new Vector2(0f, 0f);
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;	
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Jump");
 				}
 			}
 		}
@@ -169,6 +189,7 @@ public partial class PlayerBody : CharacterBody2D
 		}
 
 		if(isDashing){
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("dash");
 			dashTimer -= deltaTime;
 			if(dashTimer <= 0f){
 				isDashing = false;

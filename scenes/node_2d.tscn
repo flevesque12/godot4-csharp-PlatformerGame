@@ -1,6 +1,5 @@
-[gd_scene load_steps=93 format=3 uid="uid://bc6fakyptnimj"]
+[gd_scene load_steps=92 format=3 uid="uid://bc6fakyptnimj"]
 
-[ext_resource type="Script" path="res://firstscript.cs" id="1_qgsal"]
 [ext_resource type="Script" path="res://Scripts/player/PlayerBody.cs" id="2_i0jwi"]
 [ext_resource type="Texture2D" uid="uid://cdhta224cr3ff" path="res://Assets/chickboy/ChikBoy_idle.png" id="2_w4l0o"]
 [ext_resource type="Texture2D" uid="uid://e60ylhuuke1w" path="res://Assets/chickboy/ChikBoy_jump.png" id="4_8lurj"]
@@ -990,7 +989,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3otii")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_qgsal")
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
 script = ExtResource("2_i0jwi")
@@ -1009,18 +1007,19 @@ zoom = Vector2(3, 3)
 
 [node name="RaycastLeft" type="RayCast2D" parent="PlayerBody"]
 rotation = 1.5708
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 8)
 
 [node name="RaycastRight" type="RayCast2D" parent="PlayerBody"]
 rotation = -1.5708
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody"]
 texture_filter = 1
-position = Vector2(1, 0)
+scale = Vector2(1, 1.032)
 sprite_frames = SubResource("SpriteFrames_2ku4t")
-animation = &"attack1"
+animation = &"wallSlide"
 autoplay = "Idle"
+flip_h = true
 
 [node name="CollectableCrystal" type="Area2D" parent="."]
 script = ExtResource("4_uh1lu")
@@ -1039,5 +1038,13 @@ texture_filter = 1
 tile_set = SubResource("TileSet_ftnbt")
 format = 2
 layer_0/tile_data = PackedInt32Array(65536, 1179648, 5, 131071, 1179648, 5, 131070, 1179648, 5, 131069, 1179648, 5, 65537, 1179648, 5, 65538, 1179648, 5, 65539, 1179648, 5, 65540, 1179648, 5, 65541, 1179648, 5, 196604, 1179648, 6, 196605, 1179648, 6, 65542, 1179648, 5, 65543, 1179648, 5, 196606, 1179648, 6, 196607, 1179648, 6, 131072, 1179648, 6, 131073, 1179648, 6, 131074, 1179648, 6, 131075, 1179648, 6, 131076, 1179648, 6, 131077, 1179648, 6, 131078, 1179648, 6, 131079, 1179648, 6, 131068, 1179648, 5, 262140, 1179648, 6, 262141, 1179648, 6, 262142, 1179648, 6, 262143, 1179648, 6, 196608, 1179648, 6, 196609, 1179648, 6, 196610, 1179648, 6, 196611, 1179648, 6, 196612, 1179648, 6, 196613, 1179648, 6, 196614, 1179648, 6, 196615, 1179648, 6, 327676, 1179648, 7, 327677, 1179648, 7, 327678, 1179648, 7, 327679, 1179648, 7, 262144, 1179648, 7, 262145, 1179648, 7, 262146, 1179648, 7, 262147, 1179648, 7, 262148, 1179648, 7, 262149, 1179648, 7, 262150, 1179648, 7, 262151, 1179648, 7, 65544, 1245184, 5, 131080, 1245184, 6, 196616, 1245184, 6, 262152, 1245184, 7, 131067, 1114112, 5, 196603, 1114112, 6, 262139, 1114112, 6, 327675, 1114112, 7, -65527, 1507328, 8, -65526, 1572864, 8, -65525, 1638400, 8, -131060, 851968, 5, -131059, 917504, 5, -131058, 983040, 5, -196593, 851968, 5, -196592, 917504, 5, -196591, 983040, 5, -65546, 262144, 4, -10, 262144, 5, 65526, 262144, 6, 131062, 262144, 7, -9, 327680, 5, 65527, 327680, 6, 131063, 327680, 7, 65528, 393216, 6, 131064, 393216, 7, 131065, 458752, 7, -262126, 851968, 5, -262125, 917504, 5, -262124, 983040, 5, 131059, 65536, 7, 65524, 131072, 6, 131060, 131072, 7, -11, 196608, 5, 65525, 196608, 6, 131061, 196608, 7, -131079, 1507328, 8, -65543, 1507328, 9, -131078, 1572864, 8, -65542, 1572864, 9, -131077, 1638400, 8, -65541, 1638400, 9, -7, 1507328, 8, 65529, 1507328, 9, -6, 1572864, 8, 65530, 1572864, 9, -5, 1638400, 8, 65531, 1638400, 9, 9, 1507328, 9, 10, 1572864, 9, 11, 1638400, 9, -196599, 1507328, 8, -131063, 1507328, 9, -196598, 1572864, 8, -131062, 1572864, 9, -196597, 1638400, 8, -131061, 1638400, 9, -196605, 1507328, 8, -131069, 1507328, 9, -196604, 1572864, 8, -131068, 1572864, 9, -196603, 1638400, 8, -131067, 1638400, 9, -327677, 1507328, 8, -262141, 1507328, 9, -327676, 1572864, 8, -262140, 1572864, 9, -327675, 1638400, 8, -262139, 1638400, 9, -327671, 1507328, 8, -262135, 1507328, 9, -327670, 1572864, 8, -262134, 1572864, 9, -327669, 1638400, 8, -262133, 1638400, 9, -262154, 1507328, 8, -196618, 1507328, 9, -262153, 1572864, 8, -196617, 1572864, 9, -262152, 1638400, 8, -196616, 1638400, 9, -131085, 1507328, 8, -65549, 1507328, 9, -131084, 1572864, 8, -65548, 1572864, 9, -131083, 1638400, 8, -65547, 1638400, 9)
+
+[node name="GhostPlayer" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="GhostPlayer"]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GhostPlayer"]
 
 [connection signal="body_entered" from="CollectableCrystal" to="CollectableCrystal" method="OnBodyEntered"]
