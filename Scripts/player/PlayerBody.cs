@@ -132,7 +132,7 @@ public partial class PlayerBody : CharacterBody2D
 				}
 			}
 		}
-		else if(GetNode<RayCast2D>("RaycastRight").IsColliding() && !IsOnFloor()){
+		if(GetNode<RayCast2D>("RaycastRight").IsColliding() && !IsOnFloor()){
 			if(Input.IsActionPressed("ui_down"))
 			{
 				velocity = new Vector2(velocity.X, velocity.Y);	
